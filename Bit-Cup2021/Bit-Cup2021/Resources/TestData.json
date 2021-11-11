@@ -1,0 +1,8 @@
+{
+  "instances": {
+    "numberOfInstances": "4",
+    "operatingSystemSoftware": "Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)",
+    "machineClass": "Regular",
+    "machineType": "e2-standard-8 (vCPUs: 8, RAM: 32GB)"
+  }
+}

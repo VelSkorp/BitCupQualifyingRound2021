@@ -17,10 +17,22 @@ namespace Bit_Cup2021
         [Test]
         public static void Test()
         {
-            var googleCloudMainForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<GoogleCloudMainForm>();
-            googleCloudMainForm.Search(GoogleCalculator);
-            var googleCloudSearchForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<GoogleCloudSearchForm>();
-            googleCloudSearchForm.GoToGoogleCalculator();
+            var mainForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<GoogleCloudMainForm>();
+            mainForm.Search(GoogleCalculator);
+            var searchForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<GoogleCloudSearchForm>();
+            searchForm.GoToGoogleCalculator();
+            var calculatorForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<GoogleCloudCalculatorForm>();
+            calculatorForm.SwitchToMyFrame();
+            calculatorForm.ClickComputeEngineLabel();
+            calculatorForm.EnterNumberOfInstances(TestData.NumberOfInstances);
+            calculatorForm.ClickOperatingSystemSoftwareLabel();
+            calculatorForm.ClickOperatingSystemSoftwareOptionLabel(TestData.OperatingSystemSoftware);
+            calculatorForm.ClickMachineClassLabel();
+            calculatorForm.ClickMachineClassLabelOptionLabel(TestData.MachineClass);
+            calculatorForm.ClickMachineTypeLabel();
+            calculatorForm.ClickMachineTypeLabelOptionLabel(TestData.MachineType);
+            calculatorForm.ClickAddToEstimateInstancesButton();
+
             System.Diagnostics.Debugger.Launch();
         }
 
