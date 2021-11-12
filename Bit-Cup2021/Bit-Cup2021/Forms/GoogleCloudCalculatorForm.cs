@@ -10,6 +10,7 @@ namespace Bit_Cup2021
         private static string FrameID => "myFrame";
         private ITextBox NumberOfInstancesTextBox => ElementFactory.GetTextBox(By.XPath("//input[@id='input_74']"), "Number of instances text box");
         private ITextBox NumberOfNodesTextBox => ElementFactory.GetTextBox(By.XPath("//input[@id='input_120']"), "Number of nodes text box");
+        private ITextBox EmailTextBox => ElementFactory.GetTextBox(By.XPath("//input[@type='email']"), "Email text box");
         private ILabel ComputeEngineLabel => ElementFactory.GetLabel(By.XPath("//md-pagination-wrapper//div[@class='tab-holder compute']"), "Compute engine label");
         private ILabel OperatingSystemSoftwareLabel => ElementFactory.GetLabel(By.XPath("//md-select[@id='select_87']"), "Operating system software label");
         private ILabel MachineClassLabel => ElementFactory.GetLabel(By.XPath("//md-select[@id='select_91']"), "Machine class label");
@@ -19,9 +20,11 @@ namespace Bit_Cup2021
         private ILabel LocalSSDLabel => ElementFactory.GetLabel(By.XPath("//md-select[@id='select_133']"), "Local SSD label");
         private ILabel DatacenterLocationLabel => ElementFactory.GetLabel(By.XPath("//md-select[@id='select_136']"), "Datacenter location label");
         private ILabel CommitedUsageLabel => ElementFactory.GetLabel(By.XPath("//md-select[@id='select_141']"), "Commited usage label");
+        private ILabel TotalEstimatedMonthlyCostLabel => ElementFactory.GetLabel(By.XPath("//h2[@class='md-title']//b[@class='ng-binding']"), "Total estimated monthly cost label");
         private IButton AddToEstimateInstancesButton => ElementFactory.GetButton(By.XPath("(//button[@aria-label='Add to Estimate'])[1]"), "Add to estimate instances button");
         private IButton AddToEstimateSoleTenantNodesButton => ElementFactory.GetButton(By.XPath("(//button[@aria-label='Add to Estimate'])[2]"), "Add to estimate sole tenant nodes button");
         private IButton EmailEstimateButton => ElementFactory.GetButton(By.XPath("//button[@id='email_quote']"), "Email estimate button");
+        private IButton SendEmailButton => ElementFactory.GetButton(By.XPath("//button[@aria-label='Send Email']"), "Send email button");
         private ICheckBox AddGPUsCheckBox => ElementFactory.GetCheckBox(By.XPath("//md-checkbox[@aria-label='Add GPUs']"), "Add GPUs check box");
 
         public GoogleCloudCalculatorForm()
@@ -53,6 +56,11 @@ namespace Bit_Cup2021
         public void EnterNumberOfNodes(int numberOfNodes)
         {
             NumberOfNodesTextBox.ClearAndType(numberOfNodes.ToString());
+        }
+
+        public void EnterEmail(string Email)
+        {
+            EmailTextBox.ClearAndType(Email);
         }
 
         public void ClickOperatingSystemSoftwareLabel()
@@ -108,6 +116,11 @@ namespace Bit_Cup2021
         public void ClickEmailEstimateButton()
         {
             EmailEstimateButton.Click();
+        }
+
+        public void ClickSendEmailButton()
+        {
+            SendEmailButton.Click();
         }
 
         public bool IsOperatingSystemSoftwareOptionExist(string optionText)
@@ -188,6 +201,11 @@ namespace Bit_Cup2021
         public void ClickCommitedUsageOptionLabel(string optionText)
         {
             GetCommitedUsageOptionLabel(optionText).Click();
+        }
+
+        public string GetTotalEstimatedMonthlyCost()
+        {
+            return TotalEstimatedMonthlyCostLabel.Text;
         }
 
         private ILabel GetOperatingSystemSoftwareOptionLabel(string optionText)

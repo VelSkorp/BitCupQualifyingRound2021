@@ -115,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\GoogleCloudCalculatorForm.cs" />
+    <Compile Include="Forms\YopmailMailBoxForm.cs" />
+    <Compile Include="Forms\YopmailEmailGeneratorForm.cs" />
+    <Compile Include="Forms\YopmailMainForm.cs" />
     <Compile Include="Forms\GoogleCloudSearchForm.cs" />
     <Compile Include="Forms\GoogleCloudMainForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -54,8 +54,25 @@ namespace Bit_Cup2021
             calculatorForm.ClickCommitedUsageOptionLabel(TestData.CommitedUsage);
             calculatorForm.ClickAddToEstimateSoleTenantNodesButton();
             calculatorForm.ClickEmailEstimateButton();
-
-            System.Diagnostics.Debugger.Launch();
+            var googleCloudTabHandle = AqualityServices.Browser.Tabs().CurrentTabHandle;
+            AqualityServices.Browser.Tabs().OpenInNewTab(ConfigData.YopmailUrl);
+            AqualityServices.Browser.Tabs().SwitchToLastTab();
+            var yopmailMainForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<YopmailMainForm>();
+            yopmailMainForm.GoToEmailGenerator();
+            var yopmailEmailGeneratorForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<YopmailEmailGeneratorForm>();
+            var emailAdress = yopmailEmailGeneratorForm.GetEmailAdress();
+            yopmailEmailGeneratorForm.GoToMailBox();
+            AqualityServices.Browser.Tabs().SwitchToTab(googleCloudTabHandle);
+            calculatorForm.SwitchToMyFrame();
+            calculatorForm.EnterEmail(emailAdress);
+            calculatorForm.ClickSendEmailButton();
+            var expectedTotalEstimatedMonthlyCost = calculatorForm.GetTotalEstimatedMonthlyCost();
+            AqualityServices.Browser.Tabs().SwitchToLastTab();
+            var yopmailMailBoxForm = Bit_CupTestSteps.CreateAndWaitForFormDisplayed<YopmailMailBoxForm>();
+            yopmailMailBoxForm.RefreshMailBox();
+            yopmailMailBoxForm.SwitchToEmailContent();
+            var actualTotalEstimatedMonthlyCost = yopmailMailBoxForm.GetTotalEstimatedMonthlyCost();
+            Assert.IsTrue(expectedTotalEstimatedMonthlyCost.Contains(actualTotalEstimatedMonthlyCost), "Total estimated monthly cost in email are not equals total estimated monthly cost in calculator form");
         }
 
         [TearDown]

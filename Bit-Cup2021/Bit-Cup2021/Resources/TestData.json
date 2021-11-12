@@ -1,15 +1,15 @@
 {
   "instances": {
     "numberOfInstances": "4",
-    "operatingSystemSoftware": "Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)",
+    "operatingSystemSoftware": "Free: Debian, CentOS, CoreOS, Ubuntu, or BYOL (Brong Your Own License)",
     "machineClass": "Regular",
-    "machineType": "e2-standard-8 (vCPUs: 8, RAM: 32GB)"
+    "machineType": "e2-standard-8 (vCPUs: 8, RAM: 32 GB)"
   },
   "soleTenantNodes": {
     "numberOfNodes": "1",
-    "numberOfGPUs": "4",
+    "numberOfGPUs": "8",
     "gpuType": "NVIDIA Tesla V100",
-    "localSSD": "24x375 GB",
+    "localSSD": "24x375 Gb",
     "datacenterLocation": "Los Angeles (us-west2)",
     "commitedUsage": "1 Year"
   }
