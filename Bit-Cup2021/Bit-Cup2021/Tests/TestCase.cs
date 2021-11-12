@@ -26,12 +26,34 @@ namespace Bit_Cup2021
             calculatorForm.ClickComputeEngineLabel();
             calculatorForm.EnterNumberOfInstances(TestData.NumberOfInstances);
             calculatorForm.ClickOperatingSystemSoftwareLabel();
+            Assert.IsTrue(calculatorForm.IsOperatingSystemSoftwareOptionExist(TestData.OperatingSystemSoftware), $"{TestData.OperatingSystemSoftware} option is not exist");
             calculatorForm.ClickOperatingSystemSoftwareOptionLabel(TestData.OperatingSystemSoftware);
             calculatorForm.ClickMachineClassLabel();
-            calculatorForm.ClickMachineClassLabelOptionLabel(TestData.MachineClass);
+            Assert.IsTrue(calculatorForm.IsMachineClassOptionExist(TestData.MachineClass), $"{TestData.MachineClass} option is not exist");
+            calculatorForm.ClickMachineClassOptionLabel(TestData.MachineClass);
             calculatorForm.ClickMachineTypeLabel();
-            calculatorForm.ClickMachineTypeLabelOptionLabel(TestData.MachineType);
+            Assert.IsTrue(calculatorForm.IsMachineTypeOptionExist(TestData.MachineType), $"{TestData.MachineType} option is not exist");
+            calculatorForm.ClickMachineTypeOptionLabel(TestData.MachineType);
             calculatorForm.ClickAddToEstimateInstancesButton();
+            calculatorForm.EnterNumberOfNodes(TestData.NumberOfNodes);
+            calculatorForm.CheckAddGPUsCheckBox();
+            calculatorForm.ClickNumberOfGPUsLabel();
+            Assert.IsTrue(calculatorForm.IsNumberOfGPUsOptionExist(TestData.NumberOfGPUs), $"{TestData.NumberOfGPUs} option is not exist");
+            calculatorForm.ClickNumberOfGPUsOptionLabel(TestData.NumberOfGPUs);
+            calculatorForm.ClickGPUTypeLabel();
+            Assert.IsTrue(calculatorForm.IsGPUTypeOptionExist(TestData.GPUType), $"{TestData.GPUType} option is not exist");
+            calculatorForm.ClickGPUTypeOptionLabel(TestData.GPUType);
+            calculatorForm.ClickLocalSSDLabel();
+            Assert.IsTrue(calculatorForm.IsLocalSSDOptionExist(TestData.LocalSSD), $"{TestData.LocalSSD} option is not exist");
+            calculatorForm.ClickLocalSSDOptionLabel(TestData.LocalSSD);
+            calculatorForm.ClickDatacenterLocationLabel();
+            Assert.IsTrue(calculatorForm.IsDatacenterLocationOptionExist(TestData.DatacenterLocation), $"{TestData.DatacenterLocation} option is not exist");
+            calculatorForm.ClickDatacenterLocationOptionLabel(TestData.DatacenterLocation);
+            calculatorForm.ClickCommitedUsageLabel();
+            Assert.IsTrue(calculatorForm.IsCommitedUsageOptionExist(TestData.CommitedUsage), $"{TestData.CommitedUsage} option is not exist");
+            calculatorForm.ClickCommitedUsageOptionLabel(TestData.CommitedUsage);
+            calculatorForm.ClickAddToEstimateSoleTenantNodesButton();
+            calculatorForm.ClickEmailEstimateButton();
 
             System.Diagnostics.Debugger.Launch();
         }
